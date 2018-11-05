@@ -1,0 +1,357 @@
+
+ <div class="row wow fadeIn mt-5">
+    <div class="col-md-6 mb-4">
+      <div class="card">
+        <div class="card-header">
+            Profile client
+          </div>
+      <!--Card content-->
+      <div class="card-body">
+    
+        <!-- Table  -->
+        <table class="table table-hover">
+          <!-- Table head -->
+          <thead class="blue-grey lighten-4">
+            <tr>
+              <th>Nom</th>
+              <th>Prenom</th>
+              <th>date naisssance</th>
+              <th>Telephone</th>
+              <th>CNI</th>
+              
+            </tr>
+          </thead>
+          <!-- Table head -->
+    
+          <!-- Table body -->
+          <tbody >
+            <tr>
+             
+              <td>{{client.nom}}</td>
+              <td>{{client.prenom}}</td>
+              <td>{{client.dateNaiss}}</td>
+              <td>{{client.tel}}</td>
+              <td>{{client.cni}}</td>
+            </tr>
+           
+          </tbody>
+          <!-- Table body -->
+        </table>
+        <!-- Table  -->
+        <button class="btn btn-primary" (click)="modifier(client.id)">modifier</button>
+        <button class="btn btn-success" (click)="voirProfil(client.id)">voir profil</button>
+      </div>
+     
+      
+    </div>
+    </div>
+    <div class="col-md-6 mb-4">
+      <div class="card">
+        <div class="card-header">
+            Portefeuille
+          </div>
+      <!--Card content-->
+      <div class="card-body">
+        <div class="row">
+          <div class="col-md-3">
+            nombre de titre:
+          </div>
+          <div class="col-md-3">
+            200
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-3">
+            liquidite:
+          </div>
+          <div class="col-md-3">
+            2000
+          </div>
+        </div>
+       
+      </div>
+    
+    </div>
+    </div>
+ </div>
+
+<div class="row wow fadeIn">
+
+    <!--Grid column-->
+    
+    <!--Grid column-->
+    <div class="col-md-6 mb-4">
+       
+      
+        <div class="card">
+    
+          <div class="card-header">
+           
+            <div class="row">
+                <div class="col-md-10">
+                    Note rattacher a ce client
+                </div>
+               
+                <div class="col-md-1">
+                    <span class="btn btn-primary" (click)="ajouterNote()">
+                        <i class="fa fa-plus"></i>
+                    </span>
+                </div>
+              </div>
+          </div>
+          <div class="card-body">
+    
+           
+            <table class="table table-hover">
+          
+              <thead class="blue lighten-4">
+                <tr>
+                 
+                  <th>sujet</th>
+                  <th>description</th>
+                 
+                </tr>
+              </thead>
+              <!-- Table head -->
+    
+              <!-- Table body -->
+              <tbody *ngFor="let note of notes">
+               
+                    <tr  class="waves-light" data-toggle="modal" data-target="#basicExample" (click)="modif(tache.id);centralLarge.show()">
+                      
+                        
+                        <td>{{note.sujet}}</td>
+                        <td>{{note.description}}</td>
+                        
+                      </tr>
+              
+                
+                
+              </tbody>
+              <!-- Table body -->
+            </table>
+            <!-- Table  -->
+    
+          </div>
+    
+        </div>
+        <!--/.Card-->
+    
+      </div>
+    <!--Grid column-->
+    <div class="col-md-6 mb-4">
+  
+      
+      <div class="card">
+  
+        <div class="card-header">
+          
+          <div class="row">
+              <div class="col-md-5">
+                  Tache rattacher a ce client
+              </div>
+              <div class="col-md-5">
+                <form class="d-flex justify-content-center">
+                  <!-- Default input -->
+                  <input type="date" aria-label="Search" class="form-control" name="dateDebutTache" [(ngModel)]="dateDebutTache">
+                  <button class="btn btn-primary btn-sm my-0 p" type="submit" (click)="chercherTache()">
+                    <i class="fa fa-search"></i>
+                  </button>
+            
+                </form>
+              </div>
+              <div class="col-md-1">
+                  <span class="btn btn-primary" (click)="ajouterTache()">
+                      <i class="fa fa-plus"></i>
+                  </span>
+              </div>
+            </div>
+        </div>
+        <div class="card-body">
+  
+         
+          <table class="table table-hover">
+        
+            <thead class="blue lighten-4">
+              <tr>
+                <th>id</th>
+                <th>sujet</th>
+                <th>date debut</th>
+                <th>Date fin</th>
+              </tr>
+            </thead>
+            <!-- Table head -->
+  
+            <!-- Table body -->
+            <tbody *ngFor="let tache of taches">
+             
+                  <tr  class="waves-light" data-toggle="modal" data-target="#basicExample" (click)="modif(tache.id);centralLarge.show()">
+                    
+                      <td>{{tache.id}}</td>
+                      <td>{{tache.sujet}}</td>
+                      <td>{{tache.dateDebut}}</td>
+                      <td>{{tache.dateFin}}</td>
+                    </tr>
+            
+              
+              
+            </tbody>
+            <!-- Table body -->
+          </table>
+          <!-- Table  -->
+  
+        </div>
+  
+      </div>
+      <!--/.Card-->
+  
+    </div>
+    <!--Grid column-->
+  
+  </div>
+  <div class="row wow fadeIn mt-5">
+      <div class="col-md-6 mb-4">
+  
+          <!--Card-->
+          <div class="card">
+              <div class="card-header">
+                  Liste operation effectue sur le compte
+                </div>
+            <!--Card content-->
+            <div class="card-body">
+      
+              <!-- Table  -->
+              <table class="table table-hover">
+                <!-- Table head -->
+                <thead class="blue-grey lighten-4">
+                  <tr>
+                    <th>type</th>
+                    <th>titre</th>
+                    <th>quantite</th>
+                    <th>prix</th>
+                    
+                  </tr>
+                </thead>
+                <!-- Table head -->
+      
+                <!-- Table body -->
+                <tbody *ngFor="let operation of operations">
+                  <tr>
+                   
+                    <td>{{operation.typeOp}}</td>
+                    <td>{{operation.titre}}</td>
+                    <td>{{operation.quantite}}</td>
+                    <td>{{operation.prix}}</td>
+                  </tr>
+                 
+                </tbody>
+                <!-- Table body -->
+              </table>
+              <!-- Table  -->
+      
+            </div>
+      
+          </div>
+          <!--/.Card-->
+      
+        </div>
+      
+  </div>
+<!--Grid row-->
+<div class="row wow fadeIn mt-5">
+
+  <!--Grid column-->
+  
+  <div class="col-md-9 mb-4">
+
+    <!--Card-->
+    <div class="card">
+        <div class="card-header">
+            Rapport des operations sur le compte
+        </div>
+      <!--Card content-->
+      <div class="card-body">
+
+        <div style="display: block">
+          <canvas mdbChart [chartType]="chart1Type" [datasets]="chartDatasets" [labels]="chartLabels" [colors]="chartColors" [options]="chartOptions"
+            [legend]="true">
+          </canvas>
+        </div>
+      </div>
+
+    </div>
+    <!--/.Card-->
+
+  </div>
+  <!--Grid column-->
+
+  <!--Grid column-->
+  <div class="col-md-3 mb-4">
+
+    <!--Card-->
+    <div class="card mb-4">
+
+      <!-- Card header -->
+      <div class="card-header text-center">
+        Pie chart
+      </div>
+
+      <!--Card content-->
+      <div class="card-body">
+
+        <div style="display: block">
+          <canvas mdbChart [chartType]="chart2Type" [datasets]="chartDatasets" [labels]="chartLabels" [colors]="chartColors" [options]="chartOptions"
+            [legend]="true">
+          </canvas>
+        </div>
+      </div>
+
+    </div>
+    <!--/.Card-->
+
+    <!--Card-->
+    <div class="card mb-4">
+
+      <!--Card content-->
+      <div class="card-body">
+
+        <!-- List group links -->
+        <div class="list-group list-group-flush">
+          <a class="list-group-item list-group-item-action waves-effect">evolution Portefeuille
+            <span class="badge badge-success badge-pill pull-right">22%
+              <i class="fa fa-arrow-up ml-1"></i>
+            </span>
+          </a>
+          <a class="list-group-item list-group-item-action waves-effect">nombre de titre vendu
+            <span class="badge badge-primary badge-pill pull-right">155
+              
+            </span>
+          </a>
+          <a class="list-group-item list-group-item-action waves-effect">nombre de titre achete
+            <span class="badge badge-primary badge-pill pull-right">144</span>
+          </a>
+          <a class="list-group-item list-group-item-action waves-effect">nombre de subscription
+            <span class="badge badge-primary badge-pill pull-right">123</span>
+          </a>
+          <a class="list-group-item list-group-item-action waves-effect">Commission
+            <span class="badge badge-primary badge-pill pull-right">8</span>
+          </a>
+        </div>
+        <!-- List group links -->
+
+      </div>
+
+    </div>
+    <!--/.Card-->
+     
+    </div>
+
+  
+  <!--Grid column-->
+
+</div>
+         
+
+
+
+<app-stats-card2></app-stats-card2>

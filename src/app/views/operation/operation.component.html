@@ -1,0 +1,67 @@
+<div class="row">
+  <div class="col-md-6">
+      <form >
+          <div class="form-group">
+            <label for="">Cni</label>
+             <input type="text" class="form-control" #box (keyup)="chercheCni(box.value)">
+          </div>
+          <div class="form-row">
+              <div class="form-group col-md-4">
+                  <label for="">Prenom</label>
+                   <input type="text" class="form-control" name="prenom" disabled [(ngModel)]="client.prenom">
+                </div>
+                
+            <div class="form-group col-md-4">
+                <label for="">Nom</label>
+                 <input type="text" class="form-control" name="nom" disabled [(ngModel)]="client.nom">
+            </div>
+            <div class="form-group col-md-4">
+                <label for="">date naissance</label>
+                 <input type="text" class="form-control" name="dateNaiss" disabled [(ngModel)]="client.dateNaiss">
+            </div>
+          </div>
+         
+             
+                
+        </form>
+        <div style="color:red">
+            {{msg}}
+        </div>
+  </div>
+  <div class="col-md-6">
+    <form #f="ngForm" (ngSubmit)="operation(f.value)">
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="">type operation</label>
+          <select name="typeOp" id="" class="form-control" [disabled]="exist" (ngModel)="operation.typeOp">
+            <option value="achat" selected>achat titre</option>
+            <option value="vente">vente titre</option>
+          </select>
+        </div>
+        <div class="form-group col-md-6">
+            <label for="">choisir titre</label>
+            <select name="titre" id="" class="form-control" [disabled]="exist" (ngModel)="operation.titre">
+              <option value="sonatel" selected>sonatel</option>
+              <option value="total">total</option>
+            </select>
+          </div>
+        <div class="col-md-6 form-group">
+          <label for="">Nombre de titre</label>
+          <input type="number" class="form-control" name="quantite" [disabled]="exist" (ngModel)="operation.quantite">
+        </div>
+        <div class="col-md-6 form-group">
+            <label for="">cours</label>
+            <input type="number" class="form-control" name="prix" [disabled]="exist" (ngModel)="operation.prix">
+        </div>
+        <div class="col-md-6 form-group">
+            <label for="">Duree de validitée</label>
+            <input type="date" class="form-control" name="duree" [disabled]="exist" (ngModel)="operation.duree">
+       </div>
+      </div>
+      <input type="number" class="form-control" name="idop" (ngModel)="operation.idop" hidden>
+      <input type="number" class="form-control" name="idClient"  [(ngModel)]="client.id" hidden>
+      <button type="submit" class="btn btn-success" > <i class="fa fa-check-circle"></i>valider</button>
+      <button type="reset" class="btn btn-primary">Annuler</button>
+    </form>
+  </div>
+</div>
